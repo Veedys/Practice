@@ -1,0 +1,45 @@
+package base;
+
+import java.io.File;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ISelect;
+import org.openqa.selenium.support.ui.Select;
+
+public class ChromeExtentions {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "/Users/sibghatullahveedy/Downloads/chromedriver");		
+		ChromeOptions options = new ChromeOptions();
+		options.addExtensions(new File("dictionary.crx"));
+		WebDriver driver = new ChromeDriver(options);
+		
+		driver.get("file:///Users/sibghatullahveedy/Downloads/extension_4_1_8_0/browser_action.html");
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		String parent = driver.getWindowHandle();
+		System.out.println("Parent Window ID = " + parent);
+		
+		
+		WebElement optiolnk = driver.findElement(By.id("options-link"));
+		optiolnk.click();
+		WebElement language = driver.findElement(By.id("language-selector"));
+		Select select = new Select(language);
+		select.selectByVisibleText("French");
+		//WebElement save = driver.findElement(By.id("save-btn"));
+		//save.click();
+		
+		WebElement search = driver.findElement(By.id("query-field"));
+		search.sendKeys("Book");
+		WebElement define = driver.findElement(By.id("define-btn"));
+		define.click();
+		Thread.sleep(5000);
+		driver.quit();
+		driver.close();
+	}
+
+}

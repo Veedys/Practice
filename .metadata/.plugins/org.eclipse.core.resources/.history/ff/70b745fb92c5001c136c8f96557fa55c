@@ -1,0 +1,38 @@
+package base;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+public class FireFox_Driver {
+
+	public static void main(String [] args){
+		
+		
+		
+		System.setProperty("webdriver.gecko.driver", "/Users/sibghatullahveedy/Downloads/geckodriver");
+		
+		
+		WebDriver driver = new FirefoxDriver();
+		driver.get("https://www.vans.com/en-us");
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		String title = driver.getTitle();
+		System.out.println("-------" + title + "--------");
+		System.out.println();
+		if (title.equals("Vans® | Official Site | Free Shipping & Returns")){
+			System.out.println("Title is correct");
+		}
+		else {
+			System.out.println("Title is wrong");
+		}
+		WebElement customsbtn = driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div/div[1]/div[1]/div[2]/div/div/header/div[1]/nav/div[4]/a"));
+		customsbtn.click();
+		driver.quit();
+		driver.close();
+		
+	}
+
+	
+}

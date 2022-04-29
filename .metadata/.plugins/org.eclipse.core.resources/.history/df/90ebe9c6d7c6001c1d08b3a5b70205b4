@@ -1,0 +1,22 @@
+package base;
+
+import java.io.File;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class ChromeExtentions {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "/Users/sibghatullahveedy/Downloads/chromedriver");
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://www.google.com");
+//		ChromeOptions options = new ChromeOptions();
+//		options.addExtensions(new File("dictionary.crx"));
+//		WebDriver driver = new ChromeDriver(options);
+//		driver.get("file:///Users/sibghatullahveedy/Downloads/extension_4_1_8_0/browser_action.html");
+//		
+	}
+
+}

@@ -1,0 +1,33 @@
+package base;
+
+import java.io.File;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class ChromeExtentions {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "/Users/sibghatullahveedy/Downloads/chromedriver");		
+		ChromeOptions options = new ChromeOptions();
+		options.addExtensions(new File("dictionary.crx"));
+		WebDriver driver = new ChromeDriver(options);
+		
+		driver.get("file:///Users/sibghatullahveedy/Downloads/extension_4_1_8_0/browser_action.html");
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		
+		WebElement search = driver.findElement(By.id("query-field"));
+		search.sendKeys("Book");
+		Thread.sleep(5000);
+		WebElement submit = driver.findElement(By.id("define-btn"));
+		submit.click();
+		Thread.sleep(5000);
+		driver.quit();
+		driver.close();
+	}
+
+}

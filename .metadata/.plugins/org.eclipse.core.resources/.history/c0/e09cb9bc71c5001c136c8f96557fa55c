@@ -1,0 +1,10 @@
+package base;
+
+public class ChromeExtentions {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chromedrive.drive", "/Applications/Google Chrome");
+
+	}
+
+}
